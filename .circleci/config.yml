@@ -9,7 +9,7 @@ jobs:
           name: The First Step
           command: gradle test
       - store_test_results:
-          path: build/test-results
+          path: build/test-results/test
   package:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -24,7 +24,7 @@ jobs:
   
 workflows:
   version: 2
-  two_job_flow:
+  job_flow:
     jobs:
       - tests
       - package:
