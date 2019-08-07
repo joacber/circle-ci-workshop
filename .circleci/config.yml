@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run: gradle test
       - store_test_results:
-         path: /tmp/test-results
+         path: /mnt/c/Users/jo-be/code/circle-ci-workshop/test-result/
