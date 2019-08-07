@@ -5,7 +5,5 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-       - run:
-          name: The First Step
-          command: gradle test
+      - run: gradle test
       
