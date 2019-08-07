@@ -4,20 +4,13 @@ jobs:
     docker:
     - image: circleci/openjdk:8-jdk
     steps:
-    - checkout
-    - run:
-        command: |
-            gradle test
-    - store_test_results:
-        path: build/test-results
-    jar:
-        docker:
-        - image: circleci/openjdk:8-jdk
-        steps:
-        - checkout
-        - run:
-            command: |
-               gradle jar
-        - store_artifacts:
-           path: /code/test-results
-           destination: prefix
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+      - store_artifacts:
+          path: ~/test-results/junit
