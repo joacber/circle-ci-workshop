@@ -21,7 +21,7 @@ jobs:
       - store_artifacts:
           path: build/libs
           destination: prefix
-  build:
+  bu:
      dockerize:
    machine: true
    steps:
@@ -42,3 +42,6 @@ workflows:
       - package:
           requires:
             - tests
+      -bu:
+          requires:
+             - package
