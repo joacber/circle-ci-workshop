@@ -7,6 +7,7 @@ jobs:
       - run:
           name: Save test results
           command: |
+          gradle test
            gradle jar
           when: always
       - store_test_results:
