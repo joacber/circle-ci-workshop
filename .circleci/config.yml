@@ -11,15 +11,13 @@ jobs:
       - store_test_results:
           path: build/test-results 
       
-    build:
+  jar:
      docker:
     - image: circleci/openjdk:8-jdk
     steps:
       - run:
           name: run jar
-          command: |
-           gradle jar
-          when: always
+          command: gradle jar
       - store_artifacts:
             path: /code/test-results
             destination: prefix
@@ -28,6 +26,6 @@ workflows:
   two_job_flow:
     jobs:
       - test
-      - build:
+      - jar:
             requires:
             - test
